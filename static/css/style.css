@@ -1,0 +1,31 @@
+html {
+  background-color: rgb(250, 250, 250);
+}
+
+body {
+  position:absolute;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.perth_skyline {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Description content media query */
+@media only screen and (max-width: 100px) {
+  /* override default class styling for positioning/padding */
+
+  .description-content {
+    /* Box-model */
+    padding: 0;
+
+    /* Positioning */
+    margin-top: 0;
+  }
+}
+
+/* ----DESCRIPTION END---- */
