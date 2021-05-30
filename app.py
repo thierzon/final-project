@@ -1,12 +1,14 @@
-# import necessary libraries
+#################################################
+# Import necessary libraries
+#################################################
 import os
+from flask_sqlalchemy import SQLAlchemy
 from flask import (
     Flask,
     render_template,
     jsonify,
     request,
     redirect)
-# import scrabe_db
 
 #################################################
 # Flask Setup
@@ -17,24 +19,21 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-from flask_sqlalchemy import SQLAlchemy
-from flask import request
-
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 # class House_prices(db.Model):
-#     __tablename__ = 'house_prices'
-#     price = db.Column(db.Integer)
-#     date = db.Column(db.Integer)
-#     suburb = db.Column(db.String)
-#     bedrooms = db.Column(db.Integer)
-#     bathrooms = db.Column(db.Integer)
-#     land_area= db.Column(db.Integer)
+    __tablename__ = 'house_prices'
+    price = db.Column(db.Integer)
+    date = db.Column(db.Integer)
+    suburb = db.Column(db.String)
+    bedrooms = db.Column(db.Integer)
+    bathrooms = db.Column(db.Integer)
+    land_area= db.Column(db.Integer)
 
 # create route that renders index.html template
 @app.route("/")
