@@ -2,7 +2,6 @@
 # Import necessary libraries
 #################################################
 import os
-from flask_sqlalchemy import SQLAlchemy
 from flask import (
     Flask,
     render_template,
@@ -19,6 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
+from flask_sqlalchemy import SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
@@ -26,8 +26,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# class House_prices(db.Model):
+class House_prices(db.Model):
     __tablename__ = 'house_prices'
+    id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer)
     date = db.Column(db.Integer)
     suburb = db.Column(db.String)
@@ -35,23 +36,32 @@ db = SQLAlchemy(app)
     bathrooms = db.Column(db.Integer)
     land_area= db.Column(db.Integer)
 
+db.Model.metadata.reflect(db.engine)
+
 # create route that renders index.html template
 @app.route("/")
 def home():
-    print(request.form)
-    # if request.form.get("form_input_1") has data 
-    # return map with data in render_template
-    # else
     return render_template("index.html")
 
 
 # Query the database and send the jsonified results
-@app.route("/api/house_prices")
-def house_prices():
-    # results = db.session.query(House_prices.price, House_prices.date, House_prices.suburb, House_prices.bedrooms, House_prices.bathrooms, House_prices.land_area).all()
-    return '5'
-    
-    return redirect("/", code=302)
+@app.route("/send", methods=["GET", "POST"])
+def send():
+    if request.method == "POST":
+        inputPrice = request.form["housePrice"]
+        inputPlot = request.form["housePlot"]
+        inputBedrooms = request.form["houseBedrooms"]
+        inputBathrooms = request.form["houseBathrooms"]
+        results = db.session.query(House_prices) \
+            .filter((House_prices.price<=inputPrice) | \
+                (House_prices.land_area>inputPlot) | \
+                (House_prices.bedrooms==inputBedrooms) | \
+                (House_prices.bathrooms==inputBathrooms)).all()
+        return results[0]
+
+        return redirect("/", results=results, code=302)
+
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
