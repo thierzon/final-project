@@ -54,10 +54,9 @@ def send():
         inputBathrooms = request.form["houseBathrooms"]
         results = db.session.query(House_prices) \
             .filter((House_prices.price<=inputPrice) | \
-                (House_prices.land_area>inputPlot) | \
+                (House_prices.land_area>=inputPlot) | \
                 (House_prices.bedrooms==inputBedrooms) | \
                 (House_prices.bathrooms==inputBathrooms)).all()
-        return results[0]
 
         return redirect("/", results=results, code=302)
 

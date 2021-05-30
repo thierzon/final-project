@@ -38,6 +38,8 @@ function chooseColor(rating) {
 // Store our API endpoint inside queryUrl
 var geoData = "https://github.com/tonywr71/GeoJson-Data/blob/master/suburb-10-wa.geojson";
 
+var geojson;
+
 // Grabbing our GeoJSON data..
 d3.json(geoData, function(data) {
   // Creating a geoJSON layer with the retrieved data
