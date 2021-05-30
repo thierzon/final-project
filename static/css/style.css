@@ -15,6 +15,14 @@ body {
   overflow-x: hidden;
 }
 
+<<<<<<< HEAD
+=======
+#map {
+  height: 100%;
+}
+
+
+>>>>>>> Spyro
 /* Description content media query */
 @media only screen and (max-width: 100px) {
   /* override default class styling for positioning/padding */
