@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-console.log("Step 1 working");
-
-var graymap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-  attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-  tileSize: 512,
-  maxZoom: 18,
-  zoomOffset: -1,
-  id: "mapbox/streets-v11",
-  accessToken: apiKey
-});
-=======
 // Creating our initial map object
 // We set the longitude, latitude, and the starting zoom level
 // This gets inserted into the div with an id of 'map'
@@ -46,7 +34,6 @@ function chooseColor(rating) {
 
 // Store our API endpoint inside queryUrl
 var geoData = "/resources/suburb-10-wa.geojson";
-var 
 
 var geojson;
 
@@ -110,4 +97,3 @@ var suburbMarkers = [];
 // Binding a pop-up to our marker
 marker.bindPopup("Your new house in this suburb!");
 
->>>>>>> Spyro
