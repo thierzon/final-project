@@ -39,109 +39,57 @@
     </div>  
     <div class="container">
         <section class="row">
-            <div class="col-md-8">
-                <div id="map"></div>
+            <div class="col-8">
+                <div id="map">
+                </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-4">
                 <section>
                     <div>
                         <h3>My house will have:</h3>
                         <hr>
                         <form>
-                            <div class="form-group row">
-                                <label class="col-sm-6 col-form-label-small">House price max. in AUD:</label>
-                                    <div class="col-sm-6">
-                                        <div class="dropdown">
-                                            <button onclick="myFunction()" class="dropdown-button">Dropdown Example
-                                            </button>
-                                            <div id="myDropdown" class="dropdown-content">
-                                                <a href="#">300000</a>
-                                                <a href="#">400000</a>
-                                                <a href="#">500000</a>
-                                                <a href="#">600000</a>
-                                                <a href="#">700000</a>
-                                                <a href="#">800000</a>
-                                                <a href="#">900000</a>
-                                                <a href="#">1000000</a>
-                                                <a href="#">2000000</a>
-                                                <a href="#">10000000</a>
-                                            </div>                                                                                        
-                                        </div>
-                                            <!-- <small class="form-text text-muted">
-                                            Only whole numbers, in AUD, without comma or period separators.
-                                            </small> -->
-                                    </div>
-                            </div>
-                            <p></p>
-                            <div class="form-group row">
-                                <label class="col-sm-6 col-form-label-small">Max. lot size in m<sup>2</sup>:</label>
-                                    <div class="col-sm-6">
-                                        <div class="dropdown">
-                                            <button onclick="myFunction()" class="dropdown-button">Dropdown Example #2
-                                            </button>
-                                            <div id="myDropdown" class="dropdown-content" name=housePlot>
-                                                <a href="#">300</a>
-                                                <a href="#">400</a>
-                                                <a href="#">500</a>
-                                                <a href="#">600</a>
-                                                <a href="#">700</a>
-                                                <a href="#">1000</a>
-                                            </div>                                                                                        
-                                        </div>
-                                    </div>
-                            </div>
-                            <p></p><div class="form-group row">
-                                <label class="col-sm-6 col-form-label-small"># of bedrooms:</label>
-                                    <div class="col-sm-6">
-                                        <div class="dropdown">
-                                            <button onclick="myFunction()" class="dropdown-button">Dropdown Example #3
-                                            </button>
-                                            <div id="myDropdown" class="dropdown-content">
-                                                <a href="#">1</a>
-                                                <a href="#">2</a>
-                                                <a href="#">3</a>
-                                                <a href="#">4</a>
-                                                <a href="#">5</a>
-                                                <a href="#">5&#62;</a>
-                                            </div>     
-                                    </div>
-                            </div>
-                            <p></p>
-                            <div class="form-group row">
-                                <label class="col-sm-6 col-form-label-small"># of bathrooms:</label>
-                                    <div class="col-sm-6">
-                                        <div class="dropdown">
-                                            <button onclick="myFunction()" class="dropdown-button">Dropdown Example #4
-                                            </button>
-                                            <div id="myDropdown" class="dropdown-content">
-                                                <a href="#">1</a>
-                                                <a href="#">2</a>
-                                                <a href="#">3</a>
-                                                <a href="#">4</a>
-                                                <a href="#">5</a>
-                                                <a href="#">5&#62;</a>
-                                            </div>  
-                                        </div>
+                            <p>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label-small">Max. house price ($):</label>
+                                        <!-- <div class="col-4"> -->
+                                            <input class="col-6" type="text" name="housePrice">
+                                        <!-- </div> -->
                                 </div>
-                            <p></p>
-                            <div class="form-group row">
-                                <label class="col-sm-6 col-form-label-small">Date:</label>
-                                    <div class="col-sm-6">
-                                        <div class="dropdown">
-                                            <button onclick="myFunction()" class="dropdown-button">Dropdown Example #5
-                                            </button>
-                                            <div id="myDropdown" class="dropdown-content">
-                                                <a href="#">3 months from this month</a>
-                                                <a href="#">6 months from this month</a>
-                                                <a href="#">1 year from this month</a>
-                                            </div>
-                                        </div>     
+                            </p>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label-small">Min. lot size in m<sup>2</sup>:</label>
+                                        <!-- <div class="col-4"> -->
+                                            <input class="col-6" type="text" name="housePlot">
+                                        <!-- </div> -->
+                                </div>
+                            <p>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label-small"># of bedrooms:</label>
+                                        <!-- <div class="col-4"> -->
+                                            <input class="col-6" type="text" name="houseBedrooms">
+                                        <!-- </div> -->
+                                </div>
+                            </p>
+                            <p>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label-small"># of bathrooms:</label>
+                                        <!-- <div class="col-4"> -->
+                                            <input class="col-6" type="text" name="houseBathrooms">
+                                        <!-- </div> -->
+                                </div>
+                            </p>
+                            <!-- <p>
+                                <div class="form-group row">
+                                <label class="col-md-6 col-form-label-small">Date:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="houseDate">
                                     </div>
-                            </div>
-                            <p></p>
+                            </div> -->
+                            <!-- </p> -->
                             <div class="form-group row">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Show me where!<a href="/send"></a></button>
+                                    <button type="submit" class="btn btn-primary">Show me where!<a href="/send">{{results}}</a></button>
                                 </div>
                             </div>
                         </form>
@@ -165,4 +113,6 @@
 
     <!-- Our JS -->
     <script type="text/javascript" src="/static/js/logic.js"></script>
+
+    <script type="text/javascript" src="static/js/choropleth.js"></script>
 </html>
