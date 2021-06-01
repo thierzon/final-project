@@ -20,21 +20,23 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // Colouring function parameters
 function chooseColor(rating) {
   var color = "";
-  if  (parseInt(rating) > 0.9 && parseInt(rating) < 1.1) {
+  if  (parseInt(rating) >= 0.9 && parseInt(rating) <= 1.1) {
       color = "green";
   }
-  else if (parseInt(rating) > 0.75 && parseInt(rating) < 0.9 && parseInt(rating) > 1.1 && parseInt(rating) < 1.25) {
+  else if (parseInt(rating) >= 0.75 && parseInt(rating) < 0.9 && parseInt(rating) > 1.1 && parseInt(rating) <= 1.25) {
       color = "orange";
   }
+  else if (parseInt(rating) < 0.75 && parseInt(rating) > 1.25) {
+    color = "orange";
+  }
   else {
-      color = "red";
+      color = "";
   }
   return color;
 }
 
 // Store our API endpoint inside queryUrl
-var geoData = "/resources/suburb-10-wa.geojson";
-var 
+var geoData = "https://github.com/tonywr71/GeoJson-Data/blob/master/suburb-10-wa.geojson";
 
 var geojson;
 
@@ -46,8 +48,7 @@ d3.json(geoData, function(data) {
     style: function(feature) {
       return {
         color: "black",
-        // Call the chooseColor function to decide which color to color our neighborhood (color based on borough)
-        fillColor: chooseColor(feature.properties.wa_local_2),
+        // fillColor: chooseColor(feature.properties.wa_local_2),
         fillOpacity: 0.25,
         weight: 0.5
       };
@@ -76,7 +77,7 @@ d3.json(geoData, function(data) {
         }
       });
       // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h1>" + feature.properties.neighborhood + "</h1> <hr> <h2>" + feature.properties.borough + "</h2>");
+      // layer.bindPopup("<h1>" + feature.properties.neighborhood + "</h1> <hr> <h2>" + feature.properties.borough + "</h2>");
 
     }
   }).addTo(myMap);

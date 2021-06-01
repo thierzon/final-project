@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\spyro\\anaconda3\\envs\\PythonData\\python.exe"
+    "python.pythonPath": "/Users/Thierry/opt/anaconda3/envs/PythonData/bin/python",
+    "liveServer.settings.port": 5501
 }
