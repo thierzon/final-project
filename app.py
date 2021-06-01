@@ -7,7 +7,8 @@ from flask import (
     render_template,
     jsonify,
     request,
-    redirect)
+    redirect,
+    make_response)
 
 #################################################
 # Flask Setup
@@ -57,8 +58,8 @@ def send():
                 (House_prices.land_area>=inputPlot) | \
                 (House_prices.bedrooms==inputBedrooms) | \
                 (House_prices.bathrooms==inputBathrooms)).all()
-
-    return jsonify(results)
+        return make_response(jsonify(results))
+    return render_template("index.html")
 
 
 

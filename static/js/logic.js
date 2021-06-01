@@ -3,7 +3,7 @@
 // This gets inserted into the div with an id of 'map'
 var myMap = L.map("map", {
   center: [-31.948327517365193, 115.86365111894163],
-  zoom: 13
+  zoom: 10
 });
 
 // Adding a tile layer (the background map image) to our map
@@ -83,10 +83,10 @@ d3.json(geoData, function(data) {
   }).addTo(myMap);
 
   d3.json("/send", function(data) {
-    console.log(data.price)
+    console.log(data)
       var suburbs=[]
 
-      for (var i=0; i < data.suburb.length; i++) {
+      for (var i=0; i < data.length; i++) {
         if (!suburbs.contains(data.suburb[i])) {
           suburbs.push(data.suburb[i]);
         }
