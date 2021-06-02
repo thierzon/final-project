@@ -33,4 +33,4 @@ Perth House Prices - https://www.kaggle.com/syuzai/perth-house-prices
 * Heroku for deployment
 
 ## Design schema: 
-![Dashboard_schema](/static/images/Dashboard_schema_final.jpg)
+![Dashboard_schema](/static/img/Dashboard_schema_final.jpg)
