@@ -2,7 +2,7 @@
 // We set the longitude, latitude, and the starting zoom level
 // This gets inserted into the div with an id of 'map'
 var myMap = L.map("map", {
-  center: [-31.948327517365193, 115.86365111894163],
+  center: [-31.95, 115.86],
   zoom: 10
 });
 
@@ -11,7 +11,7 @@ var myMap = L.map("map", {
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
   tileSize: 512,
-  maxZoom: 10,
+  maxZoom: 18,
   zoomOffset: -1,
   id: "mapbox/streets-v11",
   accessToken: API_KEY
@@ -48,8 +48,8 @@ d3.json(geoData, function(data) {
     style: function(feature) {
       return {
         color: "black",
-        // fillColor: chooseColor(feature.properties.wa_local_2),
-        fillOpacity: 0.25,
+        fillColor: "green",
+        fillOpacity: 0.0,
         weight: 0.5
       };
     },
@@ -61,14 +61,14 @@ d3.json(geoData, function(data) {
         mouseover: function(event) {
           layer = event.target;
           layer.setStyle({
-            fillOpacity: 0.9
+            fillOpacity: 0.7
           });
         },
         // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
         mouseout: function(event) {
           layer = event.target;
           layer.setStyle({
-            fillOpacity: 0.25
+            fillOpacity: 0.0
           });
         },
         // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
@@ -77,87 +77,81 @@ d3.json(geoData, function(data) {
         }
       });
       // Giving each feature a pop-up with information pertinent to it
-      // layer.bindPopup("<h1>" + feature.properties.neighborhood + "</h1> <hr> <h2>" + feature.properties.borough + "</h2>");
+      layer.bindPopup("<p>" + feature.properties.wa_local_2 + "</p>");
 
     }
   }).addTo(myMap);
 
-  d3.json("/send", function(data) {
-    console.log(data)
-      var suburbs=[]
+  // d3.json("/send", function(data) {
+  //   console.log(data)
+  //     var suburbs=[]
 
-      for (var i=0; i < data.length; i++) {
-        if (!suburbs.contains(data.suburb[i])) {
-          suburbs.push(data.suburb[i]);
-        }
-      };
-      console.log(suburbs)
+  //     for (var i=0; i < data.length; i++) {
+  //       if (!suburbs.contains(data.suburb[i])) {
+  //         suburbs.push(data.suburb[i]);
+  //       }
+  //     };
+  //     console.log(suburbs)
       // for (var i=0; i < data.length; i++) {
       //   var suburbs = Object.assign({}, )
       // }
 
-    // Create a new choropleth layer
-    geojson = L.choropleth(data, {
+  //   // Create a new choropleth layer
+  //   geojson = L.choropleth(data, {
 
-      // Define what property in the features to use
-      valueProperty: "",
+  //     // Define what property in the features to use
+  //     valueProperty: "",
 
-      // Set color scale
-      scale: ["#09ff00", "#b10026"],
+  //     // Set color scale
+  //     scale: ["#09ff00", "#b10026"],
 
-      // Number of breaks in step range
-      steps: 10,
+  //     // Number of breaks in step range
+  //     steps: 10,
 
-      // q for quartile, e for equidistant, k for k-means
-      mode: "q",
-      style: {
-        // Border color
-        color: "#fff",
-        weight: 1,
-        fillOpacity: 0.8
-      },
+  //     // q for quartile, e for equidistant, k for k-means
+  //     mode: "q",
+  //     style: {
+  //       // Border color
+  //       color: "#fff",
+  //       weight: 1,
+  //       fillOpacity: 0.8
+  //     },
 
-      // Binding a pop-up to each layer
-      onEachFeature: function(feature, layer) {
-        layer.bindPopup("Zip Code: " + feature.properties.ZIP + "<br># of hits<br>" + feature.properties.MHI2016);
-      }
-    }).addTo(myMap);
+  //     // Binding a pop-up to each layer
+  //     onEachFeature: function(feature, layer) {
+  //       layer.bindPopup("Zip Code: " + feature.properties.ZIP + "<br># of hits<br>" + feature.properties.MHI2016);
+  //     }
+  //   }).addTo(myMap);
 
-    // Set up the legend
-    var legend = L.control({ position: "bottomright" });
-    legend.onAdd = function() {
-      var div = L.DomUtil.create("div", "info legend");
-      var limits = geojson.options.limits;
-      var colors = geojson.options.colors;
-      var labels = [];
+  //   // Set up the legend
+  //   var legend = L.control({ position: "bottomright" });
+  //   legend.onAdd = function() {
+  //     var div = L.DomUtil.create("div", "info legend");
+  //     var limits = geojson.options.limits;
+  //     var colors = geojson.options.colors;
+  //     var labels = [];
 
-      // Add min & max
-      var legendInfo = "<h1>Median Income</h1>" +
-        "<div class=\"labels\">" +
-          "<div class=\"min\">" + limits[0] + "</div>" +
-          "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-        "</div>";
+  //     // Add min & max
+  //     var legendInfo = "<h1>Median Income</h1>" +
+  //       "<div class=\"labels\">" +
+  //         "<div class=\"min\">" + limits[0] + "</div>" +
+  //         "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+  //       "</div>";
 
-      div.innerHTML = legendInfo;
+  //     div.innerHTML = legendInfo;
 
-      limits.forEach(function(limit, index) {
-        labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-      });
+  //     limits.forEach(function(limit, index) {
+  //       labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+  //     });
 
-      div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-      return div;
-    };
+  //     div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+  //     return div;
+  //   };
 
-    // Adding legend to the map
-    legend.addTo(myMap);
-  });
+  //   // Adding legend to the map
+  //   legend.addTo(myMap);
+  // });
 });
-
-// keeping input value
-
-// function optionChanged(inputvalue) {
-// console.log(housePrice)
-// }
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -194,8 +188,6 @@ function handleSubmit() {
   // Build the plot with the new stock
   buildPlot(stock);
 }
-
-
 
 // Create a new marker
 // Pass in some initial options, and then add it to the map using the addTo method

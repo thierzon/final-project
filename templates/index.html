@@ -12,15 +12,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <!-- Our own CSS stylesheet -->
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
     integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
     crossorigin=""/>
 
-    <!-- d3 JavaScript -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
   </head>
 
   <body>
@@ -29,7 +27,6 @@
         <!-- <img class="perth_skyline" src="static/img/perth_skyline_header.jpg"></a> -->
     </div>
     <p></p>
-
     <div class="row">
         <div>
             <h1>
@@ -37,51 +34,51 @@
             </h1>
         </div>
     </div>  
-    <div class="container">
+    <div class="container-liquid">
         <section class="row">
             <div class="col-8">
-                <div id="map">
-                </div>
+                <div id="map"></div>
             </div>
             <div class="col-4">
                 <section>
                     <div>
                         <h3>My house will have:</h3>
-                        <hr>
                         <form>
                             <p>
                                 <div class="form-group row">
                                     <label class="col-6 col-form-label-small">Max. price ($):</label>
-                                        <input class="col-6" type="text" name="housePrice">
+                                        <input class="col-6" type="text" name="housePrice" placeholder="600000">
                                 </div>
                             </p>
                                 <div class="form-group row">
-                                    <label class="col-6 col-form-label-small">Min. lot size in m<sup>2</sup>:</label>
-                                        <input class="col-6" type="text" name="housePlot">
+                                    <label class="col-6 col-form-label-small">Min. lot size (m<sup>2</sup>):</label>
+                                        <input class="col-6" type="text" name="housePlot" placeholder="500">
                                 </div>
                             <p>
                                 <div class="form-group row">
-                                    <label class="col-6 col-form-label-small"># of bedrooms:</label>
-                                        <input class="col-6" type="text" name="houseBedrooms">
+                                    <label class="col-6 col-form-label-small">Bedrooms (#):</label>
+                                        <input class="col-6" type="text" name="houseBedrooms" placeholder="4">
                                 </div>
                             </p>
                             <p>
                                 <div class="form-group row">
-                                    <label class="col-6 col-form-label-small"># of bathrooms:</label>
-                                        <input class="col-6" type="text" name="houseBathrooms">
+                                    <label class="col-6 col-form-label-small">Bathrooms (#):</label>
+                                        <input class="col-6" type="text" name="houseBathrooms" placeholder="2">
                                 </div>
                             </p>
                             <p>
                                 <div class="form-group row">
                                     <label class="col-6 col-form-label-small">Expected purchase date:</label>
-                                        <input class="col-6" type="text" name="houseDate">
+                                        <input class="col-6" type="text" name="houseDate" placeholder="12/2022">
                                 </div>
                             </p>
-                            <div class="form-group row">
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Show me where!<a href="/send">{{results}}</a></button>
+                            <p>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Show me where!<a href="/send"></a></button>
+                                    </div>
                                 </div>
-                            </div>
+                            </p>
                         </form>
                     </div>
                 </section>
@@ -95,6 +92,8 @@
     integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
     crossorigin=""></script>
 
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <!-- API key -->
     <script type="text/javascript" src="/static/js/config.js"></script>

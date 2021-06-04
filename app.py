@@ -59,9 +59,7 @@ def send():
                 (House_prices.bedrooms==inputBedrooms) | \
                 (House_prices.bathrooms==inputBathrooms)).all()
         return make_response(jsonify(results))
-    return render_template("index.html")
-
-
+    return ("/")
 
 if __name__ == "__main__":
     app.run(debug=True)
